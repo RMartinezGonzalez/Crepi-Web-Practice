@@ -42,7 +42,13 @@ body {
     width: 100%;
     background-color: var(--bg-body);
     box-shadow: var(--bx-shadow-header);
+    transition: all 0.3s ease-in-out;
 }
+
+.header-scrolled {
+    height: 60px;
+}
+
 .menu {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -57,9 +63,11 @@ body {
     font-weight: 700;
     letter-spacing: 1px;
     font-size: 14px;
+    transition: color 0.3s, border 0.3s/*, text-decoration 0.3s*/;
 }
 .menu--item:hover {
     color: var(--clr-gray);
+    /* text-decoration: overline; */
 }
 .menu--item.active {
     border: 1px solid var(--clr-white);

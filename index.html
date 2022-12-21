@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header-hidden"></header>
+    <header class="header-hidden" id="hidden"></header>
     <header class="header" id="z-index">
         <button class="toggle"></button>
         <nav class="menu tt-uppercase">
@@ -68,11 +68,20 @@
         window.addEventListener('scroll', function() {
             const scrollPos = window.scrollY;
             const myElement = document.getElementById('z-index');
+            const hiddenHeader = document.getElementById('hidden');
 
-            if (scrollPos > 30) {
+            if (scrollPos > 5) {
                 myElement.style.zIndex = 10;
             } else {
                 myElement.style.zIndex = 0;
+            }
+
+            if (scrollPos > 5) {
+                myElement.classList.add('header-scrolled');
+                hiddenHeader.classList.add('header-scrolled');
+            } else {
+                hiddenHeader.classList.remove('header-scrolled');
+                myElement.classList.remove('header-scrolled');
             }
         });
     </script>
