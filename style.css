@@ -42,12 +42,22 @@ body {
     width: 100%;
     background-color: var(--bg-body);
     box-shadow: var(--bx-shadow-header);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 .header-scrolled {
-    height: 60px;
+    height: 65px;
+    /* animation: x 0.5s; */
 }
+
+/* @keyframes x {
+    from {
+      opacity: 50%;
+    }
+    to {
+      opacity: 100%;
+    }
+} */
 
 .menu {
     display: grid;

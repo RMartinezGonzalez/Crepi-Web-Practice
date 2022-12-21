@@ -70,13 +70,13 @@
             const myElement = document.getElementById('z-index');
             const hiddenHeader = document.getElementById('hidden');
 
-            if (scrollPos > 5) {
+            if (scrollPos > 100) {
                 myElement.style.zIndex = 10;
             } else {
                 myElement.style.zIndex = 0;
             }
 
-            if (scrollPos > 5) {
+            if (scrollPos > 100) {
                 myElement.classList.add('header-scrolled');
                 hiddenHeader.classList.add('header-scrolled');
             } else {
