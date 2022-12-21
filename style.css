@@ -1,0 +1,119 @@
+html {box-sizing: border-box;}
+*,
+*::before,
+*::after {box-sizing: inherit;}
+h1, h2, p, figure {margin: 0;}
+img {max-width: 100%; display: block;}
+a {text-decoration: none; color: inherit;}
+
+:root {
+    --clr-white: #f2f2f2;
+    --clr-gray: #a5a5a5;
+    --bg-body: #1d1d1e;
+    --bg-blue: #23b2ee;
+    --bg-blue2: #0da5f0;
+    --bx-shadow-header: 0 0 5px 0 #131313;
+}
+
+.tt-uppercase {
+    text-transform: uppercase;
+}
+.tt-capitalize {
+    text-transform: capitalize;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--bg-body);
+    color: var(--clr-white);
+}
+
+.header-hidden {
+    height: 75px;
+}
+
+.header {
+    height: 75px;
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--bg-body);
+    box-shadow: var(--bx-shadow-header);
+}
+.menu {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    gap: 30px;
+    margin-right: 4%;
+}
+.menu--item {
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+.menu--item:hover {
+    color: var(--clr-gray);
+}
+.menu--item.active {
+    border: 1px solid var(--clr-white);
+}
+.menu--item.active:hover {
+    border: 1px solid var(--clr-gray);
+}
+.toggle {
+    display: none;
+}
+
+.main__hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    background: linear-gradient(to right, var(--bg-blue), var(--bg-blue2));
+    height: 500px;
+}
+
+.main__hero--img {
+    z-index: 1;
+    display: block;
+    margin-top: 70px;
+}
+
+.main__hero--text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: space-between; */
+    gap: 30px;
+}
+
+.main__hero--button {
+    display: inline-block;
+    background: none;
+    border: none;
+}
+
+.main__image {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin: 250px 30px;
+}
+
+.footer {
+    height: 60px;
+    background-color: var(--clr-white);
+}
+
+@media screen and (max-width: 1000px){
+    .main__hero--img {
+        margin: 0;
+    }
+}
