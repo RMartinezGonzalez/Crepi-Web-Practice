@@ -13,6 +13,8 @@ a {text-decoration: none; color: inherit;}
     --bg-blue: #23b2ee;
     --bg-blue2: #0da5f0;
     --bx-shadow-header: 0 0 5px 0 #131313;
+    --bx-shadow-menu: -0px 5px 5px #111111,
+    5px -5px 5px #151515;
 }
 
 .tt-uppercase {
@@ -52,13 +54,16 @@ body {
 
 /* @keyframes x {
     from {
-      opacity: 50%;
+      opacity: 90%;
     }
     to {
       opacity: 100%;
     }
 } */
 
+.toggle-button {
+    display: none;
+}
 .menu {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -73,7 +78,7 @@ body {
     font-weight: 700;
     letter-spacing: 1px;
     font-size: 14px;
-    transition: color 0.3s, border 0.3s/*, text-decoration 0.3s*/;
+    transition: color 0.3s, border 0.3s, background 0.2s/*, text-decoration 0.3s*/;
 }
 .menu--item:hover {
     color: var(--clr-gray);
@@ -93,7 +98,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 90px;
     background: linear-gradient(to right, var(--bg-blue), var(--bg-blue2));
     height: 500px;
 }
@@ -116,11 +121,16 @@ body {
     display: inline-block;
     background: none;
     border: none;
+    transition: all 0.20s;
+}
+
+.main__hero--button:hover {
+    transform: scale(0.95);
 }
 
 .main__image {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin: 250px 30px;
 }
@@ -133,5 +143,126 @@ body {
 @media screen and (max-width: 1000px){
     .main__hero--img {
         margin: 0;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .header,
+    .header-hidden {
+        height: 65px;
+        z-index: 1;
+    }
+    .menu {
+        display: none;
+    }
+
+    .show-menu {
+        display: grid;
+        position: absolute;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        top: 65px;
+        right: -22px;
+        gap: 0;
+        /* width: 100%; */
+        height: 400px;
+        box-shadow: var(--bx-shadow-menu);
+    }
+    .menu--item {
+        padding: 25px;
+        background-color: var(--bg-body);
+    }
+    .menu--item:hover {
+        background-color: var(--bg-blue);
+        color: var(--bg-body);
+        transition: background 0.3s, color 0.3s, border 0.3s;
+    }
+
+    .menu--item.active:hover {
+        border: 1px solid var(--bg-body);
+    }
+
+    .toggle-button {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 40px;
+        background: none;
+        border: none;
+        top: 12px;
+        right: 15px;
+        cursor: pointer;
+    }
+
+    .toggle {
+        display: flex;
+        width: 1.8rem;
+        height: 3px;
+        background-color: var(--clr-white);
+        position: absolute;
+        border-radius: 3em;
+        z-index: 20;
+    }
+    .toggle::before,
+    .toggle::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-color: var(--clr-white);
+        border-radius: inherit;
+    }  
+
+    .toggle::before {
+        top: -8px;
+    }
+    .toggle::after {
+        top: 8px;
+    }
+    .toggle,
+    .toggle::before,
+    .toggle::after {
+        transition: top .3s ease-in-out, transform .3s ease-in-out, background-color .3s ease-in-out;
+    }
+    .toggle.animation {
+        background-color: transparent;
+    }
+    .toggle.animation::before {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+    .toggle.animation::after {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .main__hero {
+        flex-direction: column;
+        height: auto;
+        gap: 50px;
+    }
+
+    .main__hero--img {
+        margin: 50px 20% 0 50px;
+        z-index: 0;
+    }
+    .main__hero--text {
+        margin: 0 50px;
+    }
+    .main__hero--button {
+        margin: 50px auto 100px auto;
+        transform: scale(1.2);
+    }
+    .main__hero--button:hover {
+        transform: scale(1.15);
+    }
+    
+    .main__image {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        margin: 70px 70px;
+        gap: 80px;
     }
 }

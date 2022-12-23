@@ -12,7 +12,7 @@
 <body>
     <header class="header-hidden" id="hidden"></header>
     <header class="header" id="z-index">
-        <button class="toggle"></button>
+        <button class="toggle-button"><div class="toggle"></div></button>
         <nav class="menu tt-uppercase">
             <a href="#" class="menu--item active">home</a>
             <a href="#" class="menu--item">projects</a>
@@ -28,11 +28,15 @@
                 <img src="./assets/img/character.png" alt="crepi character" />
             </figure>
             <div class="main__hero--text">
-                <figure class="main__hero--presentation">
+                <picture class="main__hero--presentation">
+                    <source media="(max-width: 730px)"
+                    srcset="./assets/txt/presentation_text_center.png" />
+                    <source media="(min-width: 730px)"
+                    srcset="./assets/txt/presentation_text.png" />
                     <img src="./assets/txt/presentation_text.png" alt="Hello, I am crepi, Minecraft content creator making models, textures, maps and other minecraft stuff" />
-                </figure>
+                </picture>
                 <button class="main__hero--button">
-                    <a href="#"><img src="./assets/bt/old_website_bt.png" alt="old old_website_bt"></a>
+                    <a href="https://old-crepi.weebly.com/" target="_blank"><img src="./assets/bt/old_website_bt.png" alt="old old_website_bt"></a>
                 </button>
             </div>
         </section>
@@ -73,7 +77,7 @@
             if (scrollPos > 100) {
                 myElement.style.zIndex = 10;
             } else {
-                myElement.style.zIndex = 0;
+                myElement.style.zIndex = 1;
             }
 
             if (scrollPos > 100) {
@@ -82,6 +86,22 @@
             } else {
                 hiddenHeader.classList.remove('header-scrolled');
                 myElement.classList.remove('header-scrolled');
+            }
+        });
+
+        const toggleButton = document.querySelector('.toggle-button');
+        const toggle = document.querySelector('.toggle')
+        const menu = document.querySelector('.menu');
+
+        toggleButton.addEventListener('click', () => {
+            toggle.classList.toggle('animation');
+            menu.classList.toggle('show-menu');
+        });
+
+        window.addEventListener('resize', () => {
+            if (menu.classList.contains('show-menu')) {
+                menu.classList.remove('show-menu');
+                toggle.classList.remove('animation');
             }
         });
     </script>
